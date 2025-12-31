@@ -1,6 +1,8 @@
 {
   "home": "Home",
   "projects": "Projects",
+  "experience": "Experience",
+  "footerAsk": "Are you interested in working with me",
   "about": "About me",
   "helloIntroducion": "Hi, I'm Hugo",
   "introduction": "I'm a frontend developer based in Portugal, I'll help you build beautiful websites.",

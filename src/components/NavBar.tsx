@@ -3,9 +3,11 @@ import { FileUser, Mail, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { Button } from "./ui/button";
 import { useTranslation } from "react-i18next";
+import enCV from "../assets/cv-en.pdf";
+import ptCV from "../assets/cv-pt.pdf";
 
 function NavBar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
 
   const navItems = [
@@ -19,6 +21,18 @@ function NavBar() {
     pathname === path
       ? "text-purple-700"
       : "text-stone-500 transition-colors hover:text-stone-600";
+
+  const handleDownloadCV = () => {
+    const cvFile = i18n.language.startsWith("pt") ? ptCV : enCV;
+    const fileName = "CV_HugoCosta.pdf";
+
+    const link = document.createElement("a");
+    link.href = cvFile;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <nav className="flex justify-between items-center w-full relative">
@@ -45,7 +59,7 @@ function NavBar() {
         >
           <Mail />
         </Button>
-        <Button variant="outline">
+        <Button variant="outline" onClick={handleDownloadCV}>
           <FileUser /> Download CV
         </Button>
       </div>
@@ -64,7 +78,7 @@ function NavBar() {
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center md:hidden">
           <ul className="list-none flex flex-col items-center gap-8 font-bold text-3xl">
             {navItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} onClick={() => setIsOpen(false)}>
                 <Link to={item.href} className={getLinkClass(item.href)}>
                   {item.name}
                 </Link>
@@ -75,13 +89,14 @@ function NavBar() {
                 className="p-4 bg-black rounded-full"
                 onClick={() => {
                   window.location.href = "mailto:viaeshugo@gmail.com";
+                  setIsOpen(false);
                 }}
               >
                 <Mail size={24} color="white" />
               </button>
             </li>
             <li>
-              <Button variant="outline">
+              <Button variant="outline" onClick={handleDownloadCV}>
                 <FileUser /> Download CV
               </Button>
             </li>
