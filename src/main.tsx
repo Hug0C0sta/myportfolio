@@ -9,26 +9,31 @@ import Projects from "./pages/Projects";
 import i18n from "./i18n";
 import "./index.css";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "projects",
+          element: <Projects />,
+        },
+        {
+          path: "about",
+          element: <About />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/projects",
-        element: <Projects />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-    ],
-  },
-]);
+    basename: "/myportfolio",
+  }
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
