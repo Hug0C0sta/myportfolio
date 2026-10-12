@@ -3,6 +3,8 @@ import Me from "../assets/me.png";
 import MenuDigital from "../assets/menu-digital.png";
 import TravizcoSite from "../assets/travizco-site.png";
 import AppPos from "../assets/apppos.png";
+import PrecoCombustivel from "../assets/preco-combustivel.png";
+
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
@@ -11,6 +13,11 @@ function Home() {
   const navigate = useNavigate();
 
   const projects = [
+    {
+      title: "PrecoCombustivel",
+      description: t("precoCombustivelDescription"),
+      image: PrecoCombustivel,
+    },
     {
       title: "Travizco - Digital Menu",
       description: t("menuDigitalDescription"),
