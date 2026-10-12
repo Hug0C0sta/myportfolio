@@ -1,12 +1,20 @@
 import MenuDigital from "../assets/menu-digital.png";
 import TravizcoSite from "../assets/travizco-site.png";
 import AppPos from "../assets/apppos.png";
+import PrecoCombustivel from "../assets/preco-combustivel.png";
+
 import { Trans, useTranslation } from "react-i18next";
 
 function Projects() {
   const { t } = useTranslation();
 
   const projects = [
+    {
+      title: "PrecoCombustivel",
+      description: t("precoCombustivelDescription"),
+      image: PrecoCombustivel,
+      url: "https://hug0c0sta.github.io/precocombustivel/",
+    },
     {
       title: "Travizco - Digital Menu",
       description: t("menuDigitalDescription"),
@@ -43,27 +51,39 @@ function Projects() {
         <ul className="list-none flex flex-col gap-28">
           {projects.map((item, index) => (
             <li
-              key={index}
+              key={item.title}
               id={`card${index + 1}`}
               className="sticky top-0 md:top-10 bg-white min-h-dvh flex flex-col"
-              style={{
-                zIndex: index + 1,
-              }}
+              style={{ zIndex: index + 1 }}
             >
-              <div className="flex flex-col grow gap-8 pb-20">
-                <img
-                  src={item.image}
-                  className="w-full max-h-[60vh] object-contain rounded-xl bg-[#ECECEE] shadow-sm"
-                  alt={item.title}
-                />
-                <div className="flex flex-col gap-4 grow">
-                  <h4 className="text-4xl md:text-6xl font-extrabold">
-                    {item.title}
-                    <span className="text-purple-800">.</span>
-                  </h4>
-                  <p className="text-stone-600 text-xl ">{item.description}</p>
+              <a
+                href={item.url}
+                target={item.url ? "_blank" : undefined}
+                rel={item.url ? "noopener noreferrer" : undefined}
+                className={`flex flex-col grow ${
+                  item.url ? "cursor-pointer" : "cursor-default"
+                }`}
+                onClick={(event) => {
+                  if (!item.url) event.preventDefault();
+                }}
+              >
+                <div className="flex flex-col grow gap-8 pb-20">
+                  <img
+                    src={item.image}
+                    className="w-full max-h-[60vh] object-contain rounded-xl bg-[#ECECEE] shadow-sm"
+                    alt={item.title}
+                  />
+
+                  <div className="flex flex-col gap-4 grow">
+                    <h4 className="text-4xl md:text-6xl font-extrabold">
+                      {item.title}
+                      <span className="text-purple-800">.</span>
+                    </h4>
+
+                    <p className="text-stone-600 text-xl">{item.description}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </li>
           ))}
         </ul>

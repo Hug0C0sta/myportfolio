@@ -10,6 +10,7 @@
   "browseProjects": "Ver Projetos",
   "projectsTitle": "Os meus <0>projetos</0>",
   "projectsLabel": "Estes são alguns dos meus projetos!",
+  "precoCombustivelDescription": "Aplicação web desenvolvida com React e TypeScript para comparar preços de combustíveis em Portugal, integrando APIs externas, geolocalização, mapas interativos e filtros por distância e combustível.",
   "menuDigitalDescription": "Plataforma de cardápios digitais interativos projetada para otimizar a experiência do cliente, permitindo a visualização detalhada de pratos e informações do estabelecimento.",
   "travizcoDescription": "Webiste do app Travizco, com design responsivo e apresentação das suas funcionalidades.",
   "appPosDescription": "Aplicação mobile de Business Intelligence (BI) voltada para a gestão empresarial, oferecendo dashboards analíticos e monitoramento de métricas de desempenho em tempo real.",
